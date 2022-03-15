@@ -1,14 +1,14 @@
 <template>
     <div class="container w-25">
-        <form @submit.prevent="sendForm()">
+        <form @submit.prevent="sendForm">
             <div class="mb-3">
                 <label for="exampleInputtext" class="form-label">Name</label>
                 <input
                     v-model="name"
                     class="form-control"
                     type="text"
-                    id="text"
-                    name="text"
+                    id="name"
+                    name="name"
                 />
             </div>
             <div class="mb-3">
@@ -20,6 +20,7 @@
                     type="email"
                     class="form-control"
                     id="email"
+                    name="email"
                     aria-describedby="emailHelp"
                 />
                 <div id="emailHelp" class="form-text">
@@ -33,8 +34,9 @@
                 >
                 <textarea
                     v-model="message"
-                    class="form-control"
                     id="message"
+                    name="message"
+                    class="form-control"
                     rows="3"
                 ></textarea>
             </div>
@@ -56,16 +58,17 @@ export default {
     methods: {
         sendForm() {
             axios
-                .post("/Api/emailto", {
-                    name: this.name,
-                    email: this.email,
-                    message: this.message,
+                .post('/api/emailto', 
+                {
+                    'name': this.name,
+                    'email': this.email,
+                    'message': this.message,
                 })
-                .then((response) => {
+                .then(response => {
                     console.log(response);
                 })
-                .catch((error) => {
-                    console.log(error.response.data);
+                .catch(err => {
+                    console.log(err);
                 });
         },
     },
