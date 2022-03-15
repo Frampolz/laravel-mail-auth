@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+route::namespace('Api')
+    ->group(function () {
+        Route::post('/emailto', 'EmailController@store');
+    });
