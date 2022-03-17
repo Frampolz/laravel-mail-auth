@@ -20,5 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 route::namespace('Api')
     ->group(function () {
+        
         Route::post('/emailto', 'EmailController@store');
+/*         Route::post('/emailto', function(){
+            return 'prova semplice';
+        }); */
+        
     });

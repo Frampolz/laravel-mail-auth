@@ -58,16 +58,15 @@ export default {
     methods: {
         sendForm() {
             axios
-                .post('/api/emailto', 
-                {
-                    'name': this.name,
-                    'email': this.email,
-                    'message': this.message,
+                .post("/api/emailto", {
+                    name: this.name,
+                    email: this.email,
+                    message: this.message,
                 })
-                .then(response => {
+                .then((response) => {
                     console.log(response);
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
                 });
         },
